@@ -72,12 +72,12 @@ export const Footer = () => {
                     <img
                         src={logoLight}
                         alt="WIT Logo"
-                        className="h-9 md:h-11 w-auto dark:hidden opacity-90 transition-opacity hover:opacity-100"
+                        className="h-7 md:h-9 w-auto dark:hidden opacity-90 transition-opacity hover:opacity-100"
                     />
                     <img
                         src={logoDark}
                         alt="WIT Logo"
-                        className="h-9 md:h-11 w-auto hidden dark:block opacity-90 transition-opacity hover:opacity-100"
+                        className="h-7 md:h-9 w-auto hidden dark:block opacity-90 transition-opacity hover:opacity-100"
                     />
                 </div>
 
