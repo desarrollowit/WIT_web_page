@@ -97,7 +97,7 @@ export const BentoGrid = () => {
                 {sectionTitle} <span className="text-gray-400 dark:text-gray-500">{sectionSubtitle}</span>
             </motion.h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="max-w-[1024px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {products.map((product) => (
                     <motion.div
                         key={product.id}
