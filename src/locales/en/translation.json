@@ -142,8 +142,16 @@
             "saas": "SaaS",
             "cloud": "Cloud",
             "integrations": "Integrations",
-            "apis": "APIs"
-        }
+            "apis": "APIs",
+            "support": "Support",
+            "sales": "Sales",
+            "offices": "Offices"
+        },
+        "more_ways_innovate": "More ways to innovate",
+        "contact_expert": "Contact an expert",
+        "call_us": "call",
+        "search_offices": "or find our offices near you",
+        "location": "Chile"
     },
     "hero": {
         "learn_more": "Learn more",

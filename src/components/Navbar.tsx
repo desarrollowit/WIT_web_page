@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, ShoppingBag, Search, ChevronRight, Globe, Sun, Moon, ChevronDown } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, Search, ChevronRight, Globe, Sun, Moon, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import { navData } from '../lib/navData';
@@ -8,8 +8,6 @@ import { useTranslation } from 'react-i18next';
 
 export const Navbar = () => {
     const { t, i18n } = useTranslation();
-    const location = useLocation();
-    const isProductPage = location.pathname.startsWith('/products/');
     const [isOpen, setIsOpen] = useState(false); // Mobile menu state
     const [isSearchOpen, setIsSearchOpen] = useState(false); // Search state
     const [scrolled, setScrolled] = useState(false);
@@ -131,9 +129,9 @@ export const Navbar = () => {
         "Apple Intelligence",
         "Apple Trade In"
     ];
-
     const navItems = [
         { key: 'Producto', label: t('navbar.product') },
+        { key: 'IoT', label: 'IoT', path: '/products/iot' },
         { key: 'Clientes', label: t('navbar.clients') },
         { key: 'Partners', label: t('navbar.partners') },
         { key: 'IA', label: t('navbar.ia') },
@@ -144,14 +142,14 @@ export const Navbar = () => {
     return (
         <nav
             onMouseLeave={() => setActiveHover(null)}
-            className={`${isProductPage ? 'absolute' : 'fixed'} top-0 w-full z-50 transition-colors duration-500 ${isOpen || activeHover || isSearchOpen ? 'bg-white dark:bg-black text-black dark:text-white' : scrolled ? 'bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800 text-black dark:text-white' : 'bg-transparent text-black dark:text-white'
+            className={`fixed top-0 w-full z-50 transition-colors duration-500 ${isOpen || activeHover || isSearchOpen ? 'bg-white dark:bg-black text-black dark:text-white' : scrolled ? 'bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800 text-black dark:text-white' : 'bg-transparent text-black dark:text-white'
                 }`}
         >
             <div className="max-w-[1024px] mx-auto px-4 sm:px-6 relative z-50">
                 <div className="flex items-center justify-between h-[44px]">
 
                     {/* Desktop Layout */}
-                    <div className="hidden md:flex items-center justify-between w-full text-[13px] font-normal relative">
+                    <div className="hidden md:flex items-center justify-between w-full text-[13px] font-bold relative">
                         {/* WIT Logo */}
                         <Link
                             to="/"
@@ -192,13 +190,22 @@ export const Navbar = () => {
                                 <div
                                     key={item.key}
                                     className="h-full flex items-center"
-                                    onMouseEnter={() => setActiveHover(item.key)} // Keeping label for hover logic to match navData
+                                    onMouseEnter={() => setActiveHover(item.key)}
                                 >
-                                    <div
-                                        className="opacity-80 hover:opacity-100 transition-opacity tracking-wide text-current px-2 py-4 cursor-pointer"
-                                    >
-                                        {item.label}
-                                    </div>
+                                    {item.path ? (
+                                        <Link
+                                            to={item.path}
+                                            className="opacity-80 hover:opacity-100 transition-opacity tracking-wide text-current px-2 py-4 cursor-pointer font-bold"
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    ) : (
+                                        <div
+                                            className="opacity-80 hover:opacity-100 transition-opacity tracking-wide text-current px-2 py-4 cursor-pointer font-bold"
+                                        >
+                                            {item.label}
+                                        </div>
+                                    )}
                                 </div>
                             ))}
                         </div>
@@ -212,7 +219,6 @@ export const Navbar = () => {
                                         className="opacity-80 hover:opacity-100 cursor-pointer transition-opacity"
                                         onClick={toggleSearch}
                                     />
-                                    <ShoppingBag size={14} className="opacity-80 hover:opacity-100 cursor-pointer transition-opacity" />
 
                                     {/* Language Switcher */}
                                     <div className="relative group">
@@ -273,7 +279,6 @@ export const Navbar = () => {
                                 className={`cursor-pointer transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}
                                 onClick={toggleSearch} // Hooking up mobile search icon too
                             />
-                            <ShoppingBag size={18} className={`cursor-pointer transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
 
                             <button
                                 onClick={() => setIsOpen(!isOpen)}
@@ -299,7 +304,7 @@ export const Navbar = () => {
                         onMouseLeave={() => setActiveHover(null)}
                     >
                         <div className="max-w-[1024px] mx-auto px-4 sm:px-6 py-10">
-                            <div className="flex justify-start space-x-12">
+                            <div className="flex justify-start space-x-6">
                                 {navData[activeHover].map((column, idx) => (
                                     <div key={idx} className="flex flex-col space-y-4 min-w-[150px]">
                                         <h4 className="text-gray-500 dark:text-gray-400 text-sm font-semibold">{t(column.title)}</h4>
@@ -415,25 +420,21 @@ export const Navbar = () => {
                                                                                 {t(column.title)}
                                                                             </h4>
                                                                             <ul className="space-y-2 pl-2 border-l-2 border-gray-200 dark:border-gray-700">
-                                                                                {column.links.map((link) => (
-                                                                                    <li key={link}>
-                                                                                        {link.endsWith('timeline') ? (
+                                                                                {column.links.map((link, linkIdx) => {
+                                                                                    const linkPath = column.linkPaths?.[linkIdx] || '#';
+                                                                                    const finalPath = link.endsWith('timeline') ? '/timeline' : linkPath;
+                                                                                    return (
+                                                                                        <li key={link}>
                                                                                             <Link
-                                                                                                to="/timeline"
+                                                                                                to={finalPath}
                                                                                                 className="block text-base text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 pl-4 py-1"
                                                                                                 onClick={() => setIsOpen(false)}
                                                                                             >
                                                                                                 {t(link)}
                                                                                             </Link>
-                                                                                        ) : (
-                                                                                            <div
-                                                                                                className="block text-base text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 pl-4 py-1 cursor-default"
-                                                                                            >
-                                                                                                {t(link)}
-                                                                                            </div>
-                                                                                        )}
-                                                                                    </li>
-                                                                                ))}
+                                                                                        </li>
+                                                                                    );
+                                                                                })}
                                                                             </ul>
                                                                         </div>
                                                                     ))}
@@ -443,11 +444,13 @@ export const Navbar = () => {
                                                     </AnimatePresence>
                                                 </>
                                             ) : (
-                                                <div
+                                                <Link
+                                                    to={item.path || '#'}
                                                     className="block text-[28px] font-semibold text-gray-900 dark:text-[#E8E8ED] py-2 leading-tight text-left w-full"
+                                                    onClick={() => setIsOpen(false)}
                                                 >
                                                     {item.label}
-                                                </div>
+                                                </Link>
                                             )}
                                         </div>
                                     );

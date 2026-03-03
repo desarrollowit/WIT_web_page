@@ -19,7 +19,7 @@ export const CulturePage = () => {
                         className="space-y-4 mb-24"
                     >
                         <span className="text-[#0071e3] font-bold tracking-[0.2em] uppercase text-sm">{t('culture.tag')}</span>
-                        <h1 className="text-8xl md:text-[10rem] font-bold tracking-tighter leading-[0.8] mb-12">
+                        <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.1] mb-12">
                             {t('culture.hero_1')} <br />
                             {t('culture.hero_2')} <br />
                             <motion.span
@@ -65,7 +65,7 @@ export const CulturePage = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={APPLE_TRANSITION}
-                            className="text-5xl md:text-7xl font-bold tracking-tight"
+                            className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight"
                         >
                             {t('culture.stats_title')} <br /> <span className="italic font-serif text-[#0071e3]">{t('culture.stats_italic')}</span>
                         </motion.h2>
@@ -118,7 +118,7 @@ export const CulturePage = () => {
                             <Sparkles className="w-8 h-8" />
                             <span className="text-xl font-bold tracking-tight">{t('culture.blocks.innovation_tag')}</span>
                         </div>
-                        <h3 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]">
+                        <h3 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
                             {t('culture.blocks.innovation_title')}
                         </h3>
                         <p className="text-xl text-[#86868b] leading-relaxed font-medium">
@@ -151,7 +151,7 @@ export const CulturePage = () => {
                             <Heart className="w-8 h-8" />
                             <span className="text-xl font-bold tracking-tight">{t('culture.blocks.wellbeing_tag')}</span>
                         </div>
-                        <h3 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]">
+                        <h3 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
                             {t('culture.blocks.wellbeing_title')}
                         </h3>
                         <p className="text-xl text-[#86868b] leading-relaxed font-medium">
@@ -182,7 +182,7 @@ export const CulturePage = () => {
                     transition={APPLE_TRANSITION}
                     className="max-w-5xl mx-auto space-y-12"
                 >
-                    <h2 className="text-6xl md:text-[10rem] font-bold tracking-tighter leading-[0.8] mb-12">
+                    <h2 className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.1] mb-12">
                         {t('culture.final.title')}
                     </h2>
                     <p className="text-2xl md:text-3xl text-[#86868b] font-medium leading-relaxed max-w-2xl mx-auto">

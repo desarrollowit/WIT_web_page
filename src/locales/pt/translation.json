@@ -191,6 +191,20 @@
         "contact": "Contato",
         "privacy": "Política de Privacidade",
         "terms": "Termos de Uso",
-        "copyright": "Copyright © 2026 WIT. Todos os direitos reservados."
+        "copyright": "Copyright © 2026 WIT. Todos os direitos reservados.",
+        "items": {
+            "software": "Software",
+            "consulting": "Consultoria",
+            "digital": "Digital",
+            "cyber": "Segurança",
+            "support": "Suporte",
+            "sales": "Vendas",
+            "offices": "Escritórios"
+        },
+        "more_ways_innovate": "Mais formas de inovar",
+        "contact_expert": "Contate um especialista",
+        "call_us": "ligue para",
+        "search_offices": "ou procure nossos escritórios perto de você",
+        "location": "Chile"
     }
 }

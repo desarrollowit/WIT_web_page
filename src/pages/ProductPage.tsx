@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import {
     ChevronRight,
@@ -9,10 +9,9 @@ import {
     Globe,
     Smartphone,
     CheckCircle2,
-    ArrowRight,
-    Home
+    ArrowRight
 } from 'lucide-react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LightRays } from '../components/LightRays';
 
@@ -47,18 +46,11 @@ export const ProductPage = ({
     const navigate = useNavigate();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [direction, setDirection] = useState(0);
-    const [isScrolled, setIsScrolled] = useState(false);
 
     const { scrollY } = useScroll();
-    const subNavOpacity = useTransform(scrollY, [0, 100], [0, 1]);
     const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
     const heroScale = useTransform(scrollY, [0, 500], [1, 0.9]);
 
-    useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 50);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     const slideVariants = {
         enter: (direction: number) => ({
@@ -97,38 +89,6 @@ export const ProductPage = ({
 
     return (
         <div className="min-h-screen bg-white dark:bg-transparent text-black dark:text-white font-sans selection:bg-[#0071e3]/20 overflow-x-hidden">
-            {/* Apple-Style Sticky Sub-nav */}
-            <motion.div
-                style={{ opacity: subNavOpacity }}
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-[#f5f5f7] dark:border-[#1d1d1f] backdrop-blur-2xl bg-white/80 dark:bg-black/80 ${isScrolled ? 'translate-y-0' : '-translate-y-full'}`}
-            >
-                <div className="max-w-7xl mx-auto px-6 h-12 flex justify-between items-center">
-                    <div className="flex items-center gap-4">
-                        <Link to="/" className="text-[#1d1d1f] dark:text-[#f5f5f7] hover:text-[#0071e3] transition-colors">
-                            <Home className="w-5 h-5" />
-                        </Link>
-                        <div className="h-4 w-[1px] bg-[#d2d2d7] dark:bg-[#424245]" />
-                        <span
-                            className="text-xl font-semibold tracking-tight cursor-pointer hover:text-[#0071e3] transition-colors"
-                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                        >
-                            {productName}
-                        </span>
-                    </div>
-                    <div className="flex items-center gap-8">
-                        <nav className="hidden md:flex items-center gap-6 text-[12px] font-medium tracking-tight text-[#86868b]">
-                            <a href="#overview" className="hover:text-[#0071e3] transition-colors">{t('product.template.features_title')}</a>
-                            <a href="#specs" className="hover:text-[#0071e3] transition-colors">{t('product.template.specs_title')}</a>
-                        </nav>
-                        <button
-                            onClick={() => navigate(`/request-demo?product=${productName}`)}
-                            className="bg-[#0071e3] text-white px-3 py-1 rounded-full text-[12px] font-semibold hover:bg-[#0077ed] transition-all"
-                        >
-                            {t('product.template.cta_demo')}
-                        </button>
-                    </div>
-                </div>
-            </motion.div>
 
             {/* Immersive Typographic Hero */}
             <section id="hero" className="relative pt-48 pb-32 px-4 overflow-hidden">
@@ -145,7 +105,7 @@ export const ProductPage = ({
                         <span className="text-[#0071e3] font-semibold tracking-[0.1em] text-lg block mb-2">
                             WIT {productName}
                         </span>
-                        <h1 className="text-5xl md:text-[10rem] font-bold tracking-tighter leading-[0.8] mb-8">
+                        <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.1] mb-8">
                             {productName}.
                         </h1>
                         <p className="text-3xl md:text-5xl text-[#86868b] font-semibold tracking-tight leading-tight max-w-5xl mx-auto">
@@ -279,7 +239,7 @@ export const ProductPage = ({
                         transition={APPLE_TRANSITION}
                         className="mb-32 max-w-3xl"
                     >
-                        <h2 className="text-6xl md:text-8xl font-bold tracking-tighter mb-12">
+                        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-12">
                             {t('product.template.features_title')}
                         </h2>
                         <p className="text-2xl md:text-3xl text-[#86868b] font-medium leading-tight">
@@ -323,7 +283,7 @@ export const ProductPage = ({
             {/* Clean Tech Specs */}
             <section id="specs" className="py-48 px-6">
                 <div className="max-w-4xl mx-auto">
-                    <h2 className="text-5xl md:text-6xl font-bold tracking-tighter mb-24 border-b pb-12 border-[#f5f5f7] dark:border-[#1d1d1f]">
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-24 border-b pb-12 border-[#f5f5f7] dark:border-[#1d1d1f]">
                         {t('product.template.specs_title')}
                     </h2>
 
@@ -358,7 +318,7 @@ export const ProductPage = ({
                     transition={APPLE_TRANSITION}
                     className="max-w-6xl mx-auto space-y-16"
                 >
-                    <h2 className="text-5xl md:text-[11rem] font-bold tracking-tighter leading-[0.8]">
+                    <h2 className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.1]">
                         Hazlo real.<br />A escala WIT.
                     </h2>
                     <p className="text-2xl md:text-3xl text-[#86868b] font-medium leading-relaxed max-w-2xl mx-auto">

@@ -31,7 +31,7 @@ export const OfficesPage = () => {
                     transition={APPLE_TRANSITION}
                     className="space-y-8"
                 >
-                    <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9]">{t('offices.hero_title')}</h1>
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.1]">{t('offices.hero_title')}</h1>
                     <p className="text-2xl text-[#86868b] font-medium max-w-2xl mx-auto">
                         {t('offices.hero_subtitle')}
                     </p>

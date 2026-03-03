@@ -1,113 +1,155 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { ChevronRight } from 'lucide-react';
 import logoLight from '../assets/logoWITMiniLight.png';
 import logoDark from '../assets/logoWITMiniDark.png';
-import verticalBanner from '../assets/banner vertical wit 2026.png';
 import horizontalBanner from '../assets/footer-bar.png';
 
 
 export const Footer = () => {
     const { t } = useTranslation();
+    const location = useLocation();
 
-    // Text Variables
-    const copyrightText = t('footer.copyright');
+    // Generate breadcrumbs based on path
+    const pathnames = location.pathname.split('/').filter((x) => x);
 
     const footerSections = [
         {
-            title: t('footer.solutions'),
-            links: [t('footer.items.software'), t('footer.items.consulting'), t('footer.items.digital'), t('footer.items.cyber')],
+            title: t('navbar.product'),
+            links: [
+                { label: 'Sentinel', path: '/products/sentinel' },
+                { label: 'TeL', path: '/products/tel' },
+                { label: 'IoT', path: '/products/iot' },
+                { label: 'Totems', path: '/products/totems' },
+                { label: 'E-commerce', path: '/products/ecommerce' },
+                { label: 'WiFi Urban', path: '/products/wifi-urban' },
+            ],
         },
         {
-            title: t('footer.platforms'),
-            links: [t('footer.items.saas'), t('footer.items.cloud'), t('footer.items.integrations'), t('footer.items.apis')],
+            title: t('footer.solutions'),
+            links: [
+                { label: t('footer.items.software'), path: '#' },
+                { label: t('footer.items.consulting'), path: '#' },
+                { label: t('footer.items.digital'), path: '#' },
+                { label: t('footer.items.cyber'), path: '#' },
+            ],
+        },
+        {
+            title: "BI & IA",
+            links: [
+                { label: t('navbar.menu.bi_section.items.dashboards'), path: '/bi/dashboards' },
+                { label: t('navbar.menu.bi_section.items.reports'), path: '/bi/reports' },
+                { label: t('navbar.menu.bi_section.items.kpis'), path: '/bi/kpis' },
+                { label: 'Machine Learning', path: '#' },
+            ],
         },
         {
             title: t('footer.company'),
-            links: [t('navbar.menu.about_section.title'), t('navbar.menu.cases.title'), t('navbar.partners'), t('navbar.menu.about_section.items.careers')],
+            links: [
+                { label: t('navbar.menu.about_section.items.history'), path: '/about' },
+                { label: t('navbar.menu.about_section.items.team'), path: '/team' },
+                { label: t('navbar.menu.about_section.items.culture'), path: '/culture' },
+                { label: t('navbar.menu.about_section.items.careers'), path: '/careers' },
+            ],
         },
         {
             title: t('footer.contact'),
             links: [
-                'Casa Matriz: Los Conquistadores 1700, Comuna Providencia, Región Metropolitana',
-                '+56990737619',
-                'contacto@wit.la'
+                { label: t('navbar.menu.contact_section.items.support'), path: '/support' },
+                { label: t('navbar.menu.contact_section.items.sales'), path: '/sales' },
+                { label: t('navbar.menu.contact_section.items.offices'), path: '/offices' },
+                { label: '9 9073 7619', path: 'tel:990737619' },
+                { label: 'Los Conquistadores 1700, Providencia', path: '/offices' },
             ],
         },
     ];
 
     return (
-        <footer id="footer" className="relative z-10 bg-gray-100 dark:bg-black/40 dark:backdrop-blur-3xl text-gray-600 dark:text-gray-100 text-sm pt-10 border-t border-gray-200 dark:border-white/10">
-            <div className="w-full px-4 sm:px-6 lg:px-8 pb-10">
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 items-start">
-                    {/* Main Footer Content */}
-                    <div className="w-full">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 md:gap-10">
-                            {/* Logo Section */}
-                            <div className="col-span-1 sm:col-span-2 md:col-span-1 mb-8 md:mb-0 flex items-start">
-                                <img
-                                    src={logoLight}
-                                    alt="WIT Logo"
-                                    className="h-10 md:h-14 w-auto dark:hidden"
-                                />
-                                <img
-                                    src={logoDark}
-                                    alt="WIT Logo"
-                                    className="h-10 md:h-14 w-auto hidden dark:block"
-                                />
-                            </div>
+        <footer id="footer" className="relative z-10 bg-[#f5f5f7] dark:bg-black text-[12px] pt-12 pb-8 font-sans border-t border-gray-200 dark:border-white/10">
+            <div className="max-w-[1024px] mx-auto px-4 sm:px-6">
+                {/* Logo Section */}
+                <div className="mb-10 flex items-start">
+                    <img
+                        src={logoLight}
+                        alt="WIT Logo"
+                        className="h-10 md:h-12 w-auto dark:hidden opacity-90 transition-opacity hover:opacity-100"
+                    />
+                    <img
+                        src={logoDark}
+                        alt="WIT Logo"
+                        className="h-10 md:h-12 w-auto hidden dark:block opacity-90 transition-opacity hover:opacity-100"
+                    />
+                </div>
 
-                            {/* Links Sections */}
-                            {footerSections.map((section) => (
-                                <div key={section.title}>
-                                    <h3 className="font-semibold text-gray-900 dark:text-white mb-7">{section.title}</h3>
-                                    <ul className="space-y-6">
-                                        {section.links.map((link) => (
-                                            <li key={link}>
-                                                <Link
-                                                    to={section.title === t('footer.contact') ? '/contact' : '#'}
-                                                    className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors hover:underline"
-                                                >
-                                                    {link}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
+                {/* Breadcrumbs */}
+                <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 mb-8 overflow-x-auto whitespace-nowrap scrollbar-hide">
+                    <ChevronRight size={12} className="opacity-40" />
+                    {pathnames.map((name, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                            <ChevronRight size={12} />
+                            <span className="capitalize">
+                                {name.replace(/-/g, ' ')}
+                            </span>
                         </div>
+                    ))}
+                </div>
 
-                        <div className="mt-8 pt-2 border-t border-gray-200 dark:border-gray-800">
-                            <div className="flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3">
-                                <p className="text-center text-[10px]">{copyrightText}</p>
-                                <div className="flex space-x-2 text-[10px]">
-                                    <Link to="#" className="hover:underline text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">{t('footer.privacy')}</Link>
-                                    <span className="text-gray-300 dark:text-gray-600">|</span>
-                                    <Link to="#" className="hover:underline text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">{t('footer.terms')}</Link>
-                                </div>
-                            </div>
+                {/* Directory Links Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-8 border-b border-gray-200 dark:border-gray-800 pb-10">
+                    {footerSections.map((section) => (
+                        <div key={section.title} className="space-y-4">
+                            <h3 className="font-semibold text-gray-900 dark:text-white text-[11px] uppercase tracking-wider">
+                                {section.title}
+                            </h3>
+                            <ul className="space-y-2">
+                                {section.links.map((link) => (
+                                    <li key={link.label}>
+                                        <Link
+                                            to={link.path}
+                                            className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Middle Section: More ways to innovate */}
+                <div className="py-6 border-b border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-400">
+                    <p>
+                        {t('footer.more_ways_innovate')}: <Link to="/contact" className="text-blue-600 dark:text-blue-400 hover:underline">{t('footer.contact_expert')}</Link>, {t('footer.call_us')} <span className="text-gray-900 dark:text-white font-medium">9 9073 7619</span> {t('footer.search_offices')}.
+                    </p>
+                </div>
+
+                {/* Bottom Legal Bar */}
+                <div className="pt-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-gray-500 dark:text-gray-400">
+                    <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-start md:items-center">
+                        <p>{t('footer.copyright')}</p>
+                        <div className="flex gap-4">
+                            <Link to="#" className="hover:underline">{t('footer.privacy')}</Link>
+                            <span className="hidden md:block text-gray-300 dark:text-gray-700">|</span>
+                            <Link to="#" className="hover:underline">{t('footer.terms')}</Link>
+                            <span className="hidden md:block text-gray-300 dark:text-gray-700">|</span>
+                            <Link to="/contact" className="hover:underline">{t('footer.contact')}</Link>
                         </div>
                     </div>
-
-                    {/* Banner Section - Responsive Layout */}
-                    <div className="flex flex-col items-center lg:items-end justify-center lg:justify-start w-full lg:w-auto">
-                        {/* Vertical Banner for Desktop */}
-                        <img
-                            src={verticalBanner}
-                            alt="WIT Vertical Banner"
-                            className="hidden lg:block h-auto max-h-[300px] w-auto object-contain"
-                        />
-                        {/* Horizontal Banner for Mobile - Full width of footer container */}
-                        <div className="block lg:hidden w-full overflow-hidden rounded-2xl mt-8">
-                            <img
-                                src={horizontalBanner}
-                                alt="WIT Horizontal Banner"
-                                className="w-full h-auto object-cover"
-                            />
-                        </div>
+                    <div className="font-medium text-gray-900 dark:text-white hover:underline cursor-pointer">
+                        {t('footer.location')}
                     </div>
                 </div>
             </div>
-        </footer>
 
+            {/* Banner Section - Responsive Layout (Keeping original assets but styling them) */}
+            <div className="mt-12 flex flex-col items-center justify-center opacity-40 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                <img
+                    src={horizontalBanner}
+                    alt="WIT Banner"
+                    className="w-full h-auto object-contain"
+                />
+            </div>
+        </footer>
     );
 };

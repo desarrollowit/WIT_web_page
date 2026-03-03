@@ -23,7 +23,7 @@ export const CareersPage = () => {
                         initial={{ opacity: 0, scale: 0.95, y: 30 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         transition={APPLE_TRANSITION}
-                        className="text-5xl md:text-[9rem] font-bold tracking-tighter leading-[0.8]"
+                        className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.1]"
                     >
                         Haz historia <br /> <span className="text-[#0071e3]">trabajando en WIT.</span>
                     </motion.h1>
@@ -60,7 +60,7 @@ export const CareersPage = () => {
                         className="space-y-12"
                     >
                         <span className="text-[#0071e3] font-bold tracking-[0.2em] uppercase text-sm">Trabajar en WIT</span>
-                        <h2 className="text-5xl md:text-8xl font-bold tracking-tight leading-[0.9]">
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
                             Expertos liderando expertos.
                         </h2>
                         <p className="text-xl md:text-2xl text-[#86868b] leading-relaxed font-medium">
@@ -94,7 +94,7 @@ export const CareersPage = () => {
                         transition={APPLE_TRANSITION}
                         className="mb-24 space-y-4"
                     >
-                        <h2 className="text-5xl md:text-7xl font-bold tracking-tighter">Encuentra <br /> <span className="text-[#0071e3] italic">tu lugar.</span></h2>
+                        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Encuentra <br /> <span className="text-[#0071e3] italic">tu lugar.</span></h2>
                         <p className="text-xl text-[#86868b] max-w-xl">Hay un espacio para cada pasión en WIT. Elige tu camino.</p>
                     </motion.div>
 
@@ -128,7 +128,7 @@ export const CareersPage = () => {
             <section className="py-48 max-w-[1440px] mx-auto px-4 md:px-24">
                 <div className="text-center max-w-4xl mx-auto space-y-12 pb-32">
                     <span className="text-[#0071e3] font-bold tracking-[0.2em] uppercase text-sm">Vida en WIT</span>
-                    <h2 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9]">
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.1]">
                         Tu mejor trabajo. <br /> Tu mejor tú.
                     </h2>
                     <p className="text-xl md:text-2xl text-[#86868b] font-medium">
@@ -170,7 +170,7 @@ export const CareersPage = () => {
                     transition={APPLE_TRANSITION}
                     className="max-w-4xl mx-auto space-y-12"
                 >
-                    <h2 className="text-5xl md:text-[8rem] font-bold tracking-tighter leading-[0.8] mb-12">
+                    <h2 className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.1] mb-12">
                         Ven a <br /> crear.
                     </h2>
                     <p className="text-2xl md:text-3xl opacity-80 font-medium">Tu próximo gran desafío te espera en WIT.</p>

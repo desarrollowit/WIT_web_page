@@ -30,7 +30,7 @@ export const AboutPage = () => {
                         className="space-y-4"
                     >
                         <span className="text-xl md:text-2xl font-semibold tracking-tight text-[#86868b]">{t('about.hero_tag')}</span>
-                        <h1 className="text-5xl md:text-[10rem] font-bold tracking-tighter leading-[0.9] mb-12">
+                        <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.1] mb-12">
                             {t('about.hero_title')} <br />
                             <span className="text-[#0071e3]">{t('about.hero_title_blue')}</span>
                         </h1>
@@ -57,7 +57,7 @@ export const AboutPage = () => {
                                     initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     transition={{ ...APPLE_TRANSITION, delay: 0.2 }}
-                                    className="text-8xl md:text-[12rem] font-bold text-[#d2d2d7] dark:text-[#2d2d2f] leading-none select-none tracking-tighter"
+                                    className="text-6xl md:text-8xl lg:text-9xl font-bold text-[#d2d2d7] dark:text-[#2d2d2f] leading-none select-none tracking-tighter"
                                 >
                                     {item.year}
                                 </motion.span>
@@ -96,7 +96,7 @@ export const AboutPage = () => {
                                 <Leaf className="w-10 h-10" />
                                 <span className="text-2xl font-bold tracking-tight">{t('about.carbon.tag')}</span>
                             </div>
-                            <h2 className="text-5xl md:text-[8rem] font-bold tracking-tighter leading-[0.8] mb-12">
+                            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.1] mb-12">
                                 {t('about.carbon.title_1')} <br />
                                 <span className="text-[#34c759] italic">{t('about.carbon.title_2_italic')}</span>
                             </h2>
@@ -152,7 +152,7 @@ export const AboutPage = () => {
                     transition={APPLE_TRANSITION}
                     className="max-w-5xl mx-auto space-y-16"
                 >
-                    <h2 className="text-5xl md:text-9xl font-bold tracking-tighter leading-[0.9]">
+                    <h2 className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.1]">
                         {t('about.footer_cta.title')} <br /> <span className="text-[#0071e3]">{t('about.footer_cta.title_blue')}</span>
                     </h2>
                     <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">

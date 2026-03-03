@@ -2,8 +2,8 @@ export const navData: Record<string, { title: string; links: string[]; linkPaths
     'Producto': [
         {
             title: 'navbar.menu.products.title',
-            links: ['Sentinel', 'TeL', 'IoT', 'Totems', 'E-commerce', 'WiFi Urban'],
-            linkPaths: ['/products/sentinel', '/products/tel', '/products/iot', '/products/totems', '/products/ecommerce', '/products/wifi-urban']
+            links: ['Sentinel', 'TeL', 'Totems', 'E-commerce', 'WiFi Urban'],
+            linkPaths: ['/products/sentinel', '/products/tel', '/products/totems', '/products/ecommerce', '/products/wifi-urban']
         },
         { title: 'navbar.menu.solutions.title', links: ['navbar.menu.solutions.items.software', 'navbar.menu.solutions.items.consulting', 'navbar.menu.solutions.items.digital', 'navbar.menu.solutions.items.cyber'] },
         { title: 'navbar.menu.platforms.title', links: ['navbar.menu.platforms.items.saas', 'navbar.menu.platforms.items.cloud', 'navbar.menu.platforms.items.integrations', 'navbar.menu.platforms.items.apis'] },
