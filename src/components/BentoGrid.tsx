@@ -132,11 +132,11 @@ export const BentoGrid = () => {
 
                         {/* Banner Image - Full Width Header Style */}
                         {product.banner && (
-                            <div className="absolute top-0 left-0 right-0 z-20 w-full">
+                            <div className="absolute top-0 left-0 right-0 z-20 flex justify-center">
                                 <img
                                     src={product.banner}
                                     alt={product.title}
-                                    className="w-full h-auto object-cover select-none pointer-events-none shadow-sm"
+                                    className="w-auto h-auto max-w-full object-contain select-none pointer-events-none shadow-sm"
                                 />
                             </div>
                         )}
